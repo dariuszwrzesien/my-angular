@@ -1,0 +1,17 @@
+<app-header />
+<main>
+  <ul id="users">
+    @for (user of users; track user) {
+    <li>
+      <app-user
+        [id]="user.id"
+        [name]="user.name"
+        [avatar]="user.avatar"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    }
+  </ul>
+  <app-tasks [name]="selectedUser?.name"></app-tasks>
+</main>
+<router-outlet />
