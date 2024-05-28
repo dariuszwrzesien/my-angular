@@ -8,7 +8,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { User } from 'src/app/data/users';
+import { type User } from 'src/app/data/users';
 
 @Component({
   selector: 'app-user',
@@ -17,17 +17,11 @@ import { User } from 'src/app/data/users';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent {
-  @Input({ required: true }) id!: number;
-  @Input({ required: true }) avatar: string = '';
-  @Input({ required: true }) name: string = '';
+  @Input({ required: true }) user!: User;
   @Output() select = new EventEmitter<User>();
 
   get imagePath() {
-    return `assets/users/${this.avatar}`;
-  }
-
-  get user(): User {
-    return { id: this.id, avatar: this.avatar, name: this.name };
+    return `assets/users/${this.user.avatar}`;
   }
 
   // avatar = input.required<string>();

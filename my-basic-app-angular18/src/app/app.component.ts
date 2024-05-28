@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { UserComponent } from './components/user/user.component';
-import users, { User } from './data/users';
+import users, { type User } from './data/users';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { filter } from 'rxjs';
 
 @Component({
   standalone: true,
