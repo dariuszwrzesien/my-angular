@@ -1,14 +1,23 @@
+@if(isAddingNewTaskVisible) {
+<section id="addTask">
+  <app-new-task
+    (add)="onAddNewTask($event)"
+    (close)="onCloseNewTaskForm()"
+    [userId]="user.id"
+  />
+</section>
+}
 <section id="tasks">
   <header>
     <h2>{{ user.name }}' Tasks</h2>
     <menu>
-      <button (click)="onAddTask()">Add Task</button>
+      <button (click)="onShowNewTaskForm()">Add Task</button>
     </menu>
   </header>
   <ul id="tasks">
     @for (task of userTasks; track task.id) {
     <li>
-      <app-task [task]="task" />
+      <app-task [task]="task" (complete)="onCompleteTask($event)" />
     </li>
     }
   </ul>

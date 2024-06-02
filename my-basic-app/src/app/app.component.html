@@ -1,0 +1,38 @@
+<input type="text" [(ngModel)]="name" />
+<p>{{ name }}</p>
+
+<hr />
+<app-servers></app-servers>
+<app-success></app-success>
+<app-alert></app-alert>
+
+<hr />
+<label>Username</label>
+<input type="text" class="form-control" [(ngModel)]="username" />
+<p>Username: {{ username }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="!username"
+  (click)="resetUsername()"
+>
+  Reset
+</button>
+
+<hr />
+<button (click)="onDisplayDetails()">Display Details</button>
+@if (showPassword) {
+<p>Secret Password: test123</p>
+} @if (displayCounter > 0) {
+<ul>
+  @for (element of displayHistory; track element; let index = $index) {
+  <li
+    [ngStyle]="{
+      backgroundColor: displayCounter > 4 && index > 4 ? 'blue' : ''
+    }"
+    [ngClass]="{ 'color-white': displayCounter > 4 && index > 4 }"
+  >
+    {{ element }}
+  </li>
+  }
+</ul>
+}
