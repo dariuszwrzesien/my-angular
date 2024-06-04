@@ -6,6 +6,7 @@
         id="initial-investment"
         name="initial-investment"
         type="number"
+        (focus)="enteredInitialInvestment = ''"
         [(ngModel)]="enteredInitialInvestment"
       />
     </p>
@@ -15,6 +16,7 @@
         id="annual-investment"
         name="annual-investment"
         type="number"
+        (focus)="enteredAnnualInvestment = ''"
         [(ngModel)]="enteredAnnualInvestment"
       />
     </p>
