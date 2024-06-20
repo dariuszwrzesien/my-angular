@@ -1,4 +1,5 @@
-button {
+/* :host odnosi się do hostElement tego komponentu czyli do button[appButton], a[appButton] */
+:host {
   display: inline-block;
   padding: 0.65rem 1.35rem;
   border-radius: 0.25rem;
@@ -10,7 +11,7 @@ button {
   border: none;
 }
 
-button:hover {
+:host:hover {
   background-color: #551b98;
 }
 
@@ -20,6 +21,6 @@ button:hover {
   transition: transform 0.2s ease-in-out;
 }
 
-button:hover .icon {
+:host:hover .icon {
   transform: translateX(4px);
 }
