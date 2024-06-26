@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  effect,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 
 type ServerStatus = 'online' | 'offline' | 'unknown';
 
@@ -10,12 +18,30 @@ type ServerStatus = 'online' | 'offline' | 'unknown';
   styleUrl: './server-status.component.css',
 })
 export class ServerStatusComponent implements OnInit {
-  currentStatus: ServerStatus = 'online';
+  currentStatus = signal<ServerStatus>('online');
+
+  // private interval?: ReturnType<typeof setInterval>;
+  private destroyRef = inject(DestroyRef);
+
+  constructor() {
+    effect(() => {
+      // nasłuchuje na zmiany w currentStatus i wypisuje je w konsoli
+      console.log(this.currentStatus());
+    });
+  }
 
   ngOnInit() {
-    setInterval(() => {
-      this.currentStatus = this.getRandomStatus();
+    // this.interval = setInterval(() => {
+    //   this.currentStatus = this.getRandomStatus();
+    // }, 2000);
+    const interval = setInterval(() => {
+      this.currentStatus.set(this.getRandomStatus());
     }, 2000);
+
+    //nowa alternatywa dla onDestroy
+    this.destroyRef.onDestroy(() => {
+      clearInterval(interval);
+    });
   }
 
   getRandomStatus(): ServerStatus {
@@ -23,4 +49,8 @@ export class ServerStatusComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * statuses.length);
     return statuses[randomIndex];
   }
+
+  // ngOnDestroy(): void {
+  //   clearTimeout(this.interval);
+  // }
 }
