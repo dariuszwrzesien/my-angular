@@ -1,4 +1,11 @@
-import { Directive, effect, inject, input } from "@angular/core";
+import {
+  Directive,
+  effect,
+  inject,
+  input,
+  TemplateRef,
+  ViewContainerRef,
+} from "@angular/core";
 import { Permission } from "./auth.model";
 import { AuthService } from "./auth.service";
 
@@ -10,12 +17,15 @@ export class AuthDirective {
   userType = input.required<Permission>({ alias: "appAuth" });
   private authService = inject(AuthService);
 
+  private templateRef = inject(TemplateRef); //daje dostęp do tego co wewnątrz <ng-template>
+  private viewContainer = inject(ViewContainerRef); //daje dostep do Miejsca w którym jest wstawiany element <ng-content>
+
   constructor() {
     effect(() => {
       if (this.authService.activePermission() === this.userType()) {
-        console.log("SHOW ELEMENT");
+        this.viewContainer.createEmbeddedView(this.templateRef);
       } else {
-        console.log("DO NOT SHOW ELEMENT");
+        this.viewContainer.clear();
       }
     }); // This is a side effect, it is run when sth is changed
   }
