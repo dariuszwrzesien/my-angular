@@ -16,6 +16,7 @@ export class NewTaskComponent {
   enteredTitle = signal('');
   enteredSummary = signal('');
   enteredDate = signal('');
+  submitted = false;
   private tasksService = inject(TasksService);
   private route = inject(Router);
 
@@ -28,8 +29,27 @@ export class NewTaskComponent {
       },
       this.userId()
     );
+
+    this.submitted = true;
+
     this.route.navigate(['users', this.userId(), 'tasks'], {
       replaceUrl: true,
     });
   }
 }
+
+export const canLeaveEditPage = (component: NewTaskComponent) => {
+  if (component.submitted) {
+    return true;
+  }
+  if (
+    component.enteredTitle() ||
+    component.enteredSummary() ||
+    component.enteredDate()
+  ) {
+    return window.confirm(
+      'Do you really want to leave? You will lose your data!'
+    );
+  }
+  return true;
+};

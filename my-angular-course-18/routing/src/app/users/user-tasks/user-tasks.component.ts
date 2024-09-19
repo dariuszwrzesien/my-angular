@@ -27,6 +27,14 @@ export class UserTasksComponent {
   userId = input.required<string>();
   message = input<string>('');
   userName = input<string>('');
+
+  private activeRoute = inject(ActivatedRoute);
+
+  ngOnInit(): void {
+    this.activeRoute.data.subscribe((data) => {
+      console.log(data); //{message: string, userName: string}
+    });
+  }
 }
 
 export const resolveUserName: ResolveFn<string> = (
@@ -38,3 +46,8 @@ export const resolveUserName: ResolveFn<string> = (
     usersService.getUserName(activatedRoute.paramMap.get('userId') || '') || '';
   return userName;
 };
+
+export const resolveTitle: ResolveFn<string> = (
+  activatedRoute: ActivatedRouteSnapshot,
+  routerState: RouterStateSnapshot
+) => resolveUserName(activatedRoute, routerState) + "'s Tasks";
