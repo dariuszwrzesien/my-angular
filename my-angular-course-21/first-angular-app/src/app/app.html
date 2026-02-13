@@ -1,2 +1,9 @@
 <app-header />
+<main>
+  <ul role="list" id="users">
+    @for (user of users(); track user.id) {
+      <li role="listitem"><app-user [user]="user" /></li>
+    }
+  </ul>
+</main>
 <router-outlet />
