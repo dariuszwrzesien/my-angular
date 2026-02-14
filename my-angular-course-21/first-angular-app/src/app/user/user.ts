@@ -9,6 +9,8 @@ import { UserType } from '../data/users';
 })
 export class User {
   user = input.required<UserType>();
+  selected = input.required<boolean>();
+
   select = output<string>();
 
   onSelectUser() {

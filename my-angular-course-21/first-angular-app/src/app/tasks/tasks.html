@@ -2,12 +2,15 @@
   <header>
     <h2>Tasks for {{ user().name }}</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="toggleTaskForm()">Add Task</button>
     </menu>
   </header>
   <ul role="list" id="tasks-list">
-    @for (task of tasks(); track task.id) {
-      <li role="listitem"><app-task [task]="task" /></li>
+    @for (task of usersTasks(); track task.id) {
+      <li role="listitem"><app-task [task]="task" (complete)="onCompleteTask($event)" /></li>
     }
   </ul>
 </section>
+@if (showTaskForm() === true) {
+  <app-task-form [user]="user()" (close)="toggleTaskForm()" />
+}

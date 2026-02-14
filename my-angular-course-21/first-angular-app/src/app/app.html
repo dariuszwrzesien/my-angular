@@ -2,7 +2,13 @@
 <main>
   <ul role="list" id="users">
     @for (user of users(); track user.id) {
-      <li role="listitem"><app-user [user]="user" (select)="onSelectUser($event)" /></li>
+      <li role="listitem">
+        <app-user
+          [user]="user"
+          [selected]="!!(selectedUser()?.id === user.id)"
+          (select)="onSelectUser($event)"
+        />
+      </li>
     }
   </ul>
   @if (selectedUser(); as user) {
