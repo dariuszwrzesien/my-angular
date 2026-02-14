@@ -5,8 +5,10 @@
       <li role="listitem"><app-user [user]="user" (select)="onSelectUser($event)" /></li>
     }
   </ul>
-  @if (selectedUser()) {
-    <app-tasks [user]="selectedUser()" />
+  @if (selectedUser(); as user) {
+    <app-tasks [user]="user" [tasks]="selectedUserTasks()" />
+  } @else {
+    <p id="fallback">Please select a user to view their tasks.</p>
   }
 </main>
 <router-outlet />
