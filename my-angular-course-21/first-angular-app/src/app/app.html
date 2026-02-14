@@ -2,8 +2,11 @@
 <main>
   <ul role="list" id="users">
     @for (user of users(); track user.id) {
-      <li role="listitem"><app-user [user]="user" /></li>
+      <li role="listitem"><app-user [user]="user" (select)="onSelectUser($event)" /></li>
     }
   </ul>
+  @if (selectedUser()) {
+    <app-tasks [user]="selectedUser()" />
+  }
 </main>
 <router-outlet />

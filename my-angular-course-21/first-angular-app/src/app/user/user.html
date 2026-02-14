@@ -1,6 +1,6 @@
 <div>
-  <button>
-    <img [src]="user()?.avatar" [attr.alt]="user()?.name ?? 'User avatar'" />
-    <span>{{ user()?.name }}</span>
+  <button (click)="onSelectUser()">
+    <img [src]="user().avatar" alt="{{ user().name }}" />
+    <span>{{ user().name }}</span>
   </button>
 </div>

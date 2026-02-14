@@ -1,0 +1,178 @@
+export type TaskType = {
+  id: string;
+  userId: string;
+  title: string;
+  summary: string;
+  dueDate: string;
+};
+
+export const tasks: TaskType[] = [
+  {
+    id: 't1',
+    userId: 'user-1',
+    title: 'Master Angular',
+    summary: 'Learn all the basic and advanced features of Angular & how to apply them.',
+    dueDate: '2025-12-31',
+  },
+  {
+    id: 't2',
+    userId: 'user-2',
+    title: 'Learn TypeScript',
+    summary: 'Understand TypeScript fundamentals and advanced type system.',
+    dueDate: '2025-11-30',
+  },
+  {
+    id: 't3',
+    userId: 'user-3',
+    title: 'Build a Web App',
+    summary: 'Create a full-stack web application with Angular and Node.js.',
+    dueDate: '2025-10-15',
+  },
+  {
+    id: 't4',
+    userId: 'user-4',
+    title: 'Master RxJS',
+    summary: 'Deep dive into reactive programming with RxJS operators.',
+    dueDate: '2025-09-30',
+  },
+  {
+    id: 't5',
+    userId: 'user-1',
+    title: 'Advanced Angular Patterns',
+    summary: 'Explore dependency injection, decorators, and architectural patterns.',
+    dueDate: '2025-08-15',
+  },
+  {
+    id: 't6',
+    userId: 'user-2',
+    title: 'TypeScript Generics',
+    summary: 'Master generic types and constraints for reusable code.',
+    dueDate: '2025-08-10',
+  },
+  {
+    id: 't7',
+    userId: 'user-3',
+    title: 'API Integration',
+    summary: 'Connect your web app to REST and GraphQL APIs.',
+    dueDate: '2025-07-20',
+  },
+  {
+    id: 't8',
+    userId: 'user-4',
+    title: 'RxJS Operators Deep Dive',
+    summary: 'Learn map, filter, reduce, and composition patterns.',
+    dueDate: '2025-07-15',
+  },
+  {
+    id: 't9',
+    userId: 'user-1',
+    title: 'Testing Angular Components',
+    summary: 'Write unit and integration tests with Jasmine and Karma.',
+    dueDate: '2025-06-30',
+  },
+  {
+    id: 't10',
+    userId: 'user-2',
+    title: 'TypeScript Utilities',
+    summary: 'Build utility types and helper functions.',
+    dueDate: '2025-06-25',
+  },
+  {
+    id: 't11',
+    userId: 'user-3',
+    title: 'Performance Optimization',
+    summary: 'Optimize bundle size and runtime performance.',
+    dueDate: '2025-06-20',
+  },
+  {
+    id: 't12',
+    userId: 'user-4',
+    title: 'Error Handling Strategy',
+    summary: 'Implement comprehensive error handling and logging.',
+    dueDate: '2025-06-15',
+  },
+  {
+    id: 't13',
+    userId: 'user-1',
+    title: 'Signals and State Management',
+    summary: 'Use Angular signals for reactive state management.',
+    dueDate: '2025-05-30',
+  },
+  {
+    id: 't14',
+    userId: 'user-2',
+    title: 'Async/Await Patterns',
+    summary: 'Master asynchronous programming in TypeScript.',
+    dueDate: '2025-05-25',
+  },
+  {
+    id: 't15',
+    userId: 'user-3',
+    title: 'Accessibility Features',
+    summary: 'Implement WCAG compliant accessible components.',
+    dueDate: '2025-05-20',
+  },
+  {
+    id: 't16',
+    userId: 'user-4',
+    title: 'Subject and Observables',
+    summary: 'Understand Subject types and observable patterns.',
+    dueDate: '2025-05-15',
+  },
+  {
+    id: 't17',
+    userId: 'user-1',
+    title: 'Route Guards Implementation',
+    summary: 'Secure routes with CanActivate and CanDeactivate guards.',
+    dueDate: '2025-04-30',
+  },
+  {
+    id: 't18',
+    userId: 'user-2',
+    title: 'Type Narrowing Techniques',
+    summary: 'Use type guards and discriminated unions effectively.',
+    dueDate: '2025-04-25',
+  },
+  {
+    id: 't19',
+    userId: 'user-3',
+    title: 'Form Validation',
+    summary: 'Build custom validators and async validation.',
+    dueDate: '2025-04-20',
+  },
+  {
+    id: 't20',
+    userId: 'user-4',
+    title: 'Memory Leak Prevention',
+    summary: 'Manage subscriptions and prevent memory leaks.',
+    dueDate: '2025-04-15',
+  },
+  {
+    id: 't21',
+    userId: 'user-1',
+    title: 'Directives Creation',
+    summary: 'Build custom structural and attribute directives.',
+    dueDate: '2025-03-30',
+  },
+  {
+    id: 't22',
+    userId: 'user-2',
+    title: 'Module Federation',
+    summary: 'Share code and libraries across Angular applications.',
+    dueDate: '2025-03-25',
+  },
+  {
+    id: 't23',
+    userId: 'user-3',
+    title: 'Internationalization',
+    summary: 'Implement i18n support for multiple languages.',
+    dueDate: '2025-03-20',
+  },
+  {
+    id: 't24',
+    userId: 'user-4',
+    title: 'Caching Strategies',
+    summary: 'Implement client-side and API response caching.',
+    dueDate: '2025-03-15',
+  },
+];
