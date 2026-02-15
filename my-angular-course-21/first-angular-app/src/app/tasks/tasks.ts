@@ -3,7 +3,7 @@ import { UserType } from '../data/users';
 import { TaskType } from '../data/tasks';
 import { Task } from './task/task';
 import { TaskForm } from './task-form/task-form';
-import { TaskStateService } from './task-state.service';
+import { TaskService } from './task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -13,22 +13,20 @@ import { TaskStateService } from './task-state.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Tasks {
-  private taskStateService = inject(TaskStateService);
+  private taskService = inject(TaskService);
 
   user = input.required<UserType>();
-  tasks = input.required<TaskType[]>();
 
   showTaskForm = signal(false);
-
-  usersTasks = computed(() => this.taskStateService.getUserTasks(this.user().id, this.tasks()));
+  usersTasks = computed(() => this.taskService.getUserTasks(this.user().id));
 
   onAddTask(task: TaskType): void {
-    this.taskStateService.addTask(task);
+    this.taskService.addTask(task);
     this.showTaskForm.set(false);
   }
 
   onCompleteTask(taskId: string): void {
-    this.taskStateService.completeTask(taskId);
+    this.taskService.removeTask(taskId);
   }
 
   toggleTaskForm(): void {
